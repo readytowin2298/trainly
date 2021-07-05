@@ -11,7 +11,7 @@ CREATE TABLE users (
     department TEXT REFERENCES departments ON DELETE CASCADE,
     position TEXT,
     location TEXT,
-    trainer BOOLEAN
+    trainer BOOLEAN DEFAULT FALSE
 );
 
 
@@ -23,12 +23,12 @@ CREATE TABLE quizzes (
 );
 
 
-CREATE TABLE assignment (
+CREATE TABLE assignments (
     id SERIAL PRIMARY KEY,
     task INTEGER REFERENCES quizzes ON DELETE CASCADE,
     user_email TEXT REFERENCES users ON DELETE CASCADE,
-    completed BOOLEAN,
-    score decimal(3, 1)
+    completed BOOLEAN DEFAULT FALSE,
+    score decimal(4, 1)
 );
 
     
@@ -44,5 +44,6 @@ CREATE TABLE quiz_questions (
 CREATE TABLE quiz_answers (
     id SERIAL PRIMARY KEY,
     question_id INTEGER REFERENCES quiz_questions ON DELETE CASCADE,
-    answer_text TEXT
+    answer_text TEXT,
+    correct BOOLEAN
 );

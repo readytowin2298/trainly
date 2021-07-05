@@ -10,6 +10,8 @@ CREATE DATABASE trainly_test;
 
 \i schema.sql;
 
+\i base_data.sql;
+
 \c trainly_test;
 
 \i schema.sql
