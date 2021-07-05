@@ -1,11 +1,8 @@
--- DROP TABLE IF EXISTS departments;
-
 CREATE TABLE departments (
     department_code TEXT PRIMARY KEY,
     full_name TEXT
 );
 
--- DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     email TEXT PRIMARY KEY,
@@ -17,7 +14,6 @@ CREATE TABLE users (
     trainer BOOLEAN
 );
 
--- DROP TABLE IF EXISTS quizzes;
 
 CREATE TABLE quizzes (
     id SERIAL PRIMARY KEY,
@@ -26,7 +22,6 @@ CREATE TABLE quizzes (
     instructions TEXT
 );
 
--- DROP TABLE IF EXISTS assignment;
 
 CREATE TABLE assignment (
     id SERIAL PRIMARY KEY,
@@ -37,10 +32,6 @@ CREATE TABLE assignment (
 );
 
     
-
-
--- DROP TABLE IF EXISTS quiz_questions;
-
 CREATE TABLE quiz_questions (
     id SERIAL PRIMARY KEY,
     quiz_id INTEGER REFERENCES quizzes ON DELETE CASCADE,
@@ -49,7 +40,6 @@ CREATE TABLE quiz_questions (
     question_text TEXT
 );
 
--- DROP TABLE IF EXISTS quiz_answers;
 
 CREATE TABLE quiz_answers (
     id SERIAL PRIMARY KEY,
