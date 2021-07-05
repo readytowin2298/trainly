@@ -1,55 +1,58 @@
-DROP TABLE IF EXISTS departments,
+-- DROP TABLE IF EXISTS departments;
 
 CREATE TABLE departments (
-    department_code STRING PRIMARY KEY,
-    full_name STRING
+    department_code TEXT PRIMARY KEY,
+    full_name TEXT
 );
 
-DROP TABLE IF EXISTS users;
+-- DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-    email STRING PRIMARY KEY,
-    password STRING,
-    name STRING,
-    department REFERENCES departments ON DELETE CASCADE,
-    position STRING,
-    location STRING,
+    email TEXT PRIMARY KEY,
+    password TEXT,
+    name TEXT,
+    department TEXT REFERENCES departments ON DELETE CASCADE,
+    position TEXT,
+    location TEXT,
     trainer BOOLEAN
 );
 
-DROP TABLE IF EXISTS quizzes;
+-- DROP TABLE IF EXISTS quizzes;
 
 CREATE TABLE quizzes (
     id SERIAL PRIMARY KEY,
-    name STRING,
-    description STRING,
-    instructions STRING
+    name TEXT,
+    description TEXT,
+    instructions TEXT
 );
 
-DROP TABLE IF EXISTS assignment;
+-- DROP TABLE IF EXISTS assignment;
 
 CREATE TABLE assignment (
     id SERIAL PRIMARY KEY,
-    user REFERENCES users ON DELETE CASCADE,
-    task REFERENCES quizzes ON DELETE CASCADE,
+    task INTEGER REFERENCES quizzes ON DELETE CASCADE,
+    user_email TEXT REFERENCES users ON DELETE CASCADE,
     completed BOOLEAN,
     score decimal(3, 1)
 );
 
-DROP TABLE IF EXISTS quiz_questions;
+    
+
+
+-- DROP TABLE IF EXISTS quiz_questions;
 
 CREATE TABLE quiz_questions (
     id SERIAL PRIMARY KEY,
-    quiz_id REFERENCES quizzes ON DELETE CASCADE;
+    quiz_id INTEGER REFERENCES quizzes ON DELETE CASCADE,
     question_number INTEGER,
-    link_to_content STRING,
-    question_text STRING
+    link_to_content TEXT,
+    question_text TEXT
 );
 
-DROP TABLE IF EXISTS quiz_answers;
+-- DROP TABLE IF EXISTS quiz_answers;
 
 CREATE TABLE quiz_answers (
     id SERIAL PRIMARY KEY,
-    question_id REFERENCES quiz_questions ON DELETE CASCADE,
-    answer_text STRING
+    question_id INTEGER REFERENCES quiz_questions ON DELETE CASCADE,
+    answer_text TEXT
 );
