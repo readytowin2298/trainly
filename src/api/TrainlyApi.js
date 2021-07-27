@@ -10,7 +10,7 @@ class TrainlyApi {
         console.debug("API Call:", endpoint, data, method);
     
         const url = `${BASE_URL}/${endpoint}`;
-        const headers = { Authorization: `Bearer ${JoblyApi.token}` };
+        const headers = { Authorization: `Bearer ${TrainlyApi.token}` };
         const params = (method === "get")
             ? data
             : {};
@@ -24,6 +24,24 @@ class TrainlyApi {
         }
       };
 
+    static async getCurrentUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+    }
+
+    //  Get token for login from username, password. 
+
+    static async login(data) {
+        let res = await this.request(`auth/token`, data, "post");
+        return res.token;
+    }
+
+    // Signup for site.
+
+    static async signup(data) {
+        let res = await this.request(`auth/register`, data, "post");
+        return res.token;
+    }
 
 }
 

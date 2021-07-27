@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import UserContext from "../auth/UserContext";
-import "./Navigation.css";
+import { Nav, Navbar, Container } from 'react-bootstrap'
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function Navigation({ logout }) {
@@ -10,55 +12,34 @@ function Navigation({ logout }) {
 
   function loggedInNav() {
     return (
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item mr-4 p-2">
-            <NavLink className="nav-link" to="/companies">
-              Companies
-            </NavLink>
-          </li>
-          <li className="nav-item mr-4">
-            <NavLink className="nav-link" to="/jobs">
-              Jobs
-            </NavLink>
-          </li>
-          <li className="nav-item mr-4">
-            <NavLink className="nav-link" to="/profile">
-              Profile
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/" onClick={logout}>
-              Log out {currentUser.first_name || currentUser.username}
-            </Link>
-          </li>
-        </ul>
+        <>
+            <Nav.Link href="#"><button onClick={{logout}}>Logout</button> </Nav.Link>
+        </>
     );
   }
 
   function loggedOutNav() {
     return (
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item mr-4">
-            <NavLink className="nav-link" to="/login">
-              Login
-            </NavLink>
-          </li>
-          <li className="nav-item mr-4">
-            <NavLink className="nav-link" to="/signup">
-              Sign Up
-            </NavLink>
-          </li>
-        </ul>
+        <>
+            <Nav.Link href="#login">Login</Nav.Link>
+            <Nav.Link href="#signup">Signup</Nav.Link>
+        </>
     );
   }
 
   return (
-      <nav className="Navigation navbar navbar-expand-md">
-        <Link className="navbar-brand" to="/">
-          Jobly
-        </Link>
-        {currentUser ? loggedInNav() : loggedOutNav()}
-      </nav>
+    <Navbar bg="dark" variant="dark">
+        <Container>
+            <Navbar.Brand href="#home">Train.ly</Navbar.Brand>
+            <Nav className="me-auto">
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#features">Features</Nav.Link>
+                <Nav.Link href="#pricing">Pricing</Nav.Link>
+                { currentUser ? loggedInNav() : loggedOutNav() }
+            
+            </Nav>
+        </Container>
+    </Navbar>
   );
 }
 
