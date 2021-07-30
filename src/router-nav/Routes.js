@@ -1,6 +1,9 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "../homepage/Homepage";
+import LoginForm from "../auth/LoginForm";
+import ProfileForm from "../profiles/ProfileForm";
+import PrivateRoute from './PrivateRoutes'
 
 
 function Routes({ login, signup }) {
@@ -18,11 +21,11 @@ function Routes({ login, signup }) {
               <Homepage />
             </Route>
   
-            {/* <Route exact path="/login">
+            <Route exact path="/login">
               <LoginForm login={login} />
             </Route>
   
-            <Route exact path="/signup">
+            {/* <Route exact path="/signup">
               <SignupForm signup={signup} />
             </Route>
   
@@ -36,11 +39,11 @@ function Routes({ login, signup }) {
   
             <PrivateRoute exact path="/companies/:handle">
               <CompanyDetail />
-            </PrivateRoute>
+            </PrivateRoute> */}
   
             <PrivateRoute path="/profile">
               <ProfileForm />
-            </PrivateRoute> */}
+            </PrivateRoute>
   
             <Redirect to="/" />
           </Switch>

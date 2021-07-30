@@ -13,7 +13,7 @@ export const TOKEN_STORAGE_ID = "trainly-token";
 
 function App() {
   const [infoLoaded, setInfoLoaded] = useState(false);
-  const [applicationIds, setApplicationIds] = useState(new Set([]));
+  // const [applicationIds, setApplicationIds] = useState(new Set([]));
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
 
@@ -34,12 +34,11 @@ function App() {
     async function getCurrentUser() {
       if (token) {
         try {
-          let { username } = jwt.decode(token);
+          let { email } = jwt.decode(token);
           // put the token on the Api class so it can use it to call the API.
           TrainlyApi.token = token;
-          let currentUser = await TrainlyApi.getCurrentUser(username);
+          let currentUser = await TrainlyApi.getCurrentUser(email);
           setCurrentUser(currentUser);
-          setApplicationIds(new Set(currentUser.applications));
         } catch (err) {
           console.error("App loadUserInfo: problem loading", err);
           setCurrentUser(null);

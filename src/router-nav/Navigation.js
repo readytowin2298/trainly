@@ -9,11 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Navigation({ logout }) {
   const { currentUser } = useContext(UserContext);
   console.debug("Navigation", "currentUser=", currentUser);
-
+  console.log(currentUser)
   function loggedInNav() {
     return (
         <>
-            <Nav.Link href="#"><button onClick={{logout}}>Logout</button> </Nav.Link>
+            <Nav.Link href="#"><button onClick={logout}>Logout</button> </Nav.Link>
         </>
     );
   }
@@ -21,7 +21,7 @@ function Navigation({ logout }) {
   function loggedOutNav() {
     return (
         <>
-            <Nav.Link href="#login">Login</Nav.Link>
+            <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="#signup">Signup</Nav.Link>
         </>
     );

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "https://localhost:3001";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 
 class TrainlyApi {
@@ -41,6 +41,11 @@ class TrainlyApi {
     static async signup(data) {
         let res = await this.request(`auth/register`, data, "post");
         return res.token;
+    };
+    
+    static async saveProfile(username, data) {
+        let res = await this.request(`users/${username}`, data, "patch");
+        return res.user;
     }
 
 }
