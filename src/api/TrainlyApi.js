@@ -48,6 +48,11 @@ class TrainlyApi {
         return res.user;
     }
 
+    static async getAssignments(userEmail){
+        let res = await this.request(`assignments`);
+        return res.body;
+    }
+
 }
 
 export default TrainlyApi;

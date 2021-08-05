@@ -4,6 +4,7 @@ import Homepage from "../homepage/Homepage";
 import LoginForm from "../auth/LoginForm";
 import ProfileForm from "../profiles/ProfileForm";
 import PrivateRoute from './PrivateRoutes'
+import AssignmentList from '../assignments/AssignmentList';
 
 
 function Routes({ login, signup }) {
@@ -25,11 +26,11 @@ function Routes({ login, signup }) {
               <LoginForm login={login} />
             </Route>
   
-            {/* <Route exact path="/signup">
-              <SignupForm signup={signup} />
-            </Route>
+            <PrivateRoute exact path="/assignments">
+              <AssignmentList />
+            </PrivateRoute>
   
-            <PrivateRoute exact path="/companies">
+            {/* <PrivateRoute exact path="/companies">
               <CompanyList />
             </PrivateRoute>
   

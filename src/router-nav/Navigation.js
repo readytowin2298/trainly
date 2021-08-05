@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import { Nav, Navbar, Container } from 'react-bootstrap'
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -30,10 +29,10 @@ function Navigation({ logout }) {
   return (
     <Navbar bg="dark" variant="dark">
         <Container>
-            <Navbar.Brand href="#home">Train.ly</Navbar.Brand>
+            <Navbar.Brand href="/">Train.ly</Navbar.Brand>
             <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Features</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/assignments">Assignments</Nav.Link>
                 <Nav.Link href="#pricing">Pricing</Nav.Link>
                 { currentUser ? loggedInNav() : loggedOutNav() }
             
