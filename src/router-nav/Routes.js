@@ -7,7 +7,7 @@ import PrivateRoute from './PrivateRoutes'
 import AssignmentList from '../assignments/AssignmentList';
 
 
-function Routes({ login, signup }) {
+function Routes({ login, signup, infoLoaded, setInfoLoaded }) {
     console.debug(
         "Routes",
         `login=${typeof login}`,
@@ -27,7 +27,7 @@ function Routes({ login, signup }) {
             </Route>
   
             <PrivateRoute exact path="/assignments">
-              <AssignmentList />
+              <AssignmentList infoLoaded={infoLoaded} setInfoLoaded={setInfoLoaded} />
             </PrivateRoute>
   
             {/* <PrivateRoute exact path="/companies">

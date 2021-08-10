@@ -1,4 +1,5 @@
-import axios from "axios";
+// import axios from "axios";
+const axios = require('axios')
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -50,9 +51,11 @@ class TrainlyApi {
 
     static async getAssignments(userEmail){
         let res = await this.request(`assignments`);
-        return res.body;
+        console.log(res)
+        return res;
     }
 
 }
 
-export default TrainlyApi;
+// export default TrainlyApi;
+module.exports = TrainlyApi;

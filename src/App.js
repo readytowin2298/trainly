@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import useLocalStorage from "./hooks/useLocalStorage";import './App.css';
+import useLocalStorage from "./hooks/useLocalStorage";
+import './App.css';
 import Navigation from './router-nav/Navigation.js';
 import jwt from "jsonwebtoken";
 import UserContext from "./auth/UserContext";
@@ -41,10 +42,10 @@ function App() {
           setCurrentUser(currentUser);
         } catch (err) {
           console.error("App loadUserInfo: problem loading", err);
-          setCurrentUser(null);
+          return setCurrentUser(null);
         }
       }
-      setInfoLoaded(true);
+      return setInfoLoaded(true);
     }
 
     // set infoLoaded to false while async getCurrentUser runs; once the
@@ -101,7 +102,7 @@ function App() {
               value={{ currentUser, setCurrentUser }}>
             <div className="App">
               <Navigation logout={logout} />
-              <Routes login={login} signup={signup} />
+              <Routes login={login} signup={signup} infoLoaded={infoLoaded} setInfoLoaded={setInfoLoaded} />
             </div>
 
         </UserContext.Provider>
