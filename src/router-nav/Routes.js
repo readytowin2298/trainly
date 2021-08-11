@@ -5,7 +5,8 @@ import LoginForm from "../auth/LoginForm";
 import ProfileForm from "../profiles/ProfileForm";
 import PrivateRoute from './PrivateRoutes'
 import AssignmentList from '../assignments/AssignmentList';
-
+import QuizPage from '../assignments/QuizPage';
+import Quiz from '../assignments/Quiz';
 
 function Routes({ login, signup, infoLoaded, setInfoLoaded }) {
     console.debug(
@@ -30,15 +31,15 @@ function Routes({ login, signup, infoLoaded, setInfoLoaded }) {
               <AssignmentList infoLoaded={infoLoaded} setInfoLoaded={setInfoLoaded} />
             </PrivateRoute>
   
-            {/* <PrivateRoute exact path="/companies">
-              <CompanyList />
+            <PrivateRoute exact path="/quizzes/:quizId">
+              <QuizPage />
             </PrivateRoute>
   
-            <PrivateRoute exact path="/jobs">
-              <JobList />
+            <PrivateRoute exact path="/quizzes/complete/:quizId">
+              <Quiz />
             </PrivateRoute>
   
-            <PrivateRoute exact path="/companies/:handle">
+            {/* <PrivateRoute exact path="/companies/:handle">
               <CompanyDetail />
             </PrivateRoute> */}
   

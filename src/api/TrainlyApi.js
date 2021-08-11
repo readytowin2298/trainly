@@ -53,6 +53,11 @@ class TrainlyApi {
         let res = await this.request(`assignments`);
         console.log(res)
         return res;
+    };
+
+    static async getQuiz(quizId){
+        let res = await this.request(`quizzes/${quizId}`);
+        return res;
     }
 
 }
