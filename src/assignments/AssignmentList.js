@@ -28,7 +28,7 @@ function AssignmentList(){
                             <li>{a.completed ? 'Complete' : 'Incomplete'}</li>
                             <li>{a.score}</li>
                         </ul>
-                        <Link className="btn btn-primary" to={`/quizzes/${a.quizId}`} >Go To Quiz</Link>
+                        <Link className="btn btn-primary" to={`/quizzes/${a.id}/${a.quizId}`} >Go To Quiz</Link>
                     </div>
                 </div>))}
         </div>

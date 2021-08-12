@@ -31,12 +31,12 @@ function Routes({ login, signup, infoLoaded, setInfoLoaded }) {
               <AssignmentList infoLoaded={infoLoaded} setInfoLoaded={setInfoLoaded} />
             </PrivateRoute>
   
-            <PrivateRoute exact path="/quizzes/:quizId">
-              <QuizPage />
-            </PrivateRoute>
-  
             <PrivateRoute exact path="/quizzes/complete/:quizId">
               <Quiz />
+            </PrivateRoute>
+
+            <PrivateRoute exact path="/quizzes/:assignmentId/:quizId">
+              <QuizPage />
             </PrivateRoute>
   
             {/* <PrivateRoute exact path="/companies/:handle">

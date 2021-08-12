@@ -13,7 +13,6 @@ import Form from 'react-bootstrap/Form'
 
 function Quiz(){
     const { quizId } = useParams();
-    console.log('*****************************')
     const [quiz, setQuiz] = useState([]);
     const { currentUser } = useContext(UserContext); 
     
@@ -23,8 +22,8 @@ function Quiz(){
     useEffect(function getQuizFromServer(){
         async function getQuiz(){
             setQuiz(await TrainlyApi.getQuiz(quizId));
-            setDoneQuiz(quiz)
-            console.log(quiz)
+            setDoneQuiz(await TrainlyApi.getQuiz(quizId))
+            console.log(doneQuiz)
         };
         getQuiz()
     }, [quizId]);
@@ -51,9 +50,6 @@ function Quiz(){
         console.log(doneQuiz)
     }
 
-    function setGender(event){
-        console.log(event.target.value)
-    }
 
 
     return (
