@@ -17,15 +17,43 @@ function Quiz(){
     const [quiz, setQuiz] = useState([]);
     const { currentUser } = useContext(UserContext); 
     
+    const [doneQuiz, setDoneQuiz] = useState({})
+
     const email = currentUser.email;
     useEffect(function getQuizFromServer(){
         async function getQuiz(){
             setQuiz(await TrainlyApi.getQuiz(quizId));
+            setDoneQuiz(quiz)
             console.log(quiz)
         };
         getQuiz()
     }, [quizId]);
 
+
+    function handleChange(event){
+        const questions = [...doneQuiz.questions]
+        const questionId = Number(event.target.name.split('-')[1]);
+        const answerId = Number(event.target.id.split('-')[1]);
+        for(let question of questions){
+            if(question.id === questionId){
+                for(let answer of question.answers){
+                    if(answer.id === answerId){
+                        answer.selected = true
+                    } else {
+                        answer.selected = false
+                    }
+                }
+            }
+        }
+        setDoneQuiz({
+            ...quiz, questions : questions
+        })
+        console.log(doneQuiz)
+    }
+
+    function setGender(event){
+        console.log(event.target.value)
+    }
 
 
     return (
@@ -39,14 +67,17 @@ function Quiz(){
                     {quiz.questions ? quiz.questions.map((question) => (
                         <li className="list-item">
                             <div key={`default-radio-${question.id}`} className="mb3">
-                                <h5 className="display-5">{question.questionText}</h5>
+                                <p className="">{question.questionText}</p>
                                 {question.answers.map((answer) => (
-                                    <Form.Check 
-                                    type="radio"
-                                    id={`quiz-${answer.id}`}
-                                    label={answer.answerText}
-                                    value={answer.correct}
-                                />
+                                    <div onChange={event => handleChange(event)}>
+                                        <Form.Check 
+                                            type="radio"
+                                            id={`answer-${answer.id}`}
+                                            label={answer.answerText}
+                                            name={`question-${question.id}`}
+                                            value={answer.correct}
+                                        />
+                                    </div>
                                 ))}
                             </div>
                         </li>
