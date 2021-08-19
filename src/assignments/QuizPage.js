@@ -11,6 +11,7 @@ function QuizPage(){
     
     const [quiz, setQuiz] = useState([]);
     const [assignment, setAssignment] = useState([]);
+
     const { currentUser } = useContext(UserContext); 
     
     const email = currentUser.email;
@@ -33,7 +34,7 @@ function QuizPage(){
                 <li>Completed: {assignment.completed ? 'True' : 'False'}</li>
                 <li>Score: {assignment.score}</li>
             </ul>
-            <Link className="btn btn-success" to={`/quizzes/complete/${quizId}`}>Begin Quiz </Link>
+            <Link className="btn btn-success" to={`/quizzes/complete/${assignmentId}/${quizId}`}>Begin Quiz </Link>
         </div>
     )
 

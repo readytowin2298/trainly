@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Navigation({ logout }) {
   const { currentUser } = useContext(UserContext);
   console.debug("Navigation", "currentUser=", currentUser);
-  console.log(currentUser)
   function loggedInNav() {
     return (
         <>
@@ -32,8 +31,7 @@ function Navigation({ logout }) {
             <Navbar.Brand href="/">Train.ly</Navbar.Brand>
             <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/assignments">Assignments</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
+                <Nav.Link href="/assignments">My Assignments</Nav.Link>
                 { currentUser ? loggedInNav() : loggedOutNav() }
             
             </Nav>

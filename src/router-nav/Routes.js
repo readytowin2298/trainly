@@ -7,6 +7,8 @@ import PrivateRoute from './PrivateRoutes'
 import AssignmentList from '../assignments/AssignmentList';
 import QuizPage from '../assignments/QuizPage';
 import Quiz from '../assignments/Quiz';
+import AdminRoute from "./AdminRoute";
+import ToolBox from "../trainer/ToolBox";
 
 function Routes({ login, signup, infoLoaded, setInfoLoaded }) {
     console.debug(
@@ -31,17 +33,13 @@ function Routes({ login, signup, infoLoaded, setInfoLoaded }) {
               <AssignmentList infoLoaded={infoLoaded} setInfoLoaded={setInfoLoaded} />
             </PrivateRoute>
   
-            <PrivateRoute exact path="/quizzes/complete/:quizId">
+            <PrivateRoute exact path="/quizzes/complete/:assignmentId/:quizId">
               <Quiz />
             </PrivateRoute>
 
             <PrivateRoute exact path="/quizzes/:assignmentId/:quizId">
               <QuizPage />
             </PrivateRoute>
-  
-            {/* <PrivateRoute exact path="/companies/:handle">
-              <CompanyDetail />
-            </PrivateRoute> */}
   
             <PrivateRoute path="/profile">
               <ProfileForm />

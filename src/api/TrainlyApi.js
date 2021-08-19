@@ -65,6 +65,11 @@ class TrainlyApi {
         return res;
     }
 
+    static async gradeQuiz(quiz){
+        let res = await this.request('quizzes/grade', quiz, 'post');
+        return res;
+    }
+
 }
 
 export default TrainlyApi;
