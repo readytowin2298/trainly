@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Link, NavLink, useParams, Redirect } from "react-router-dom";
-import UserContext from "../auth/UserContext";
+import React, {  useState, useEffect } from "react";
+import { useParams, Redirect } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TrainlyApi from "../api/TrainlyApi";
 import Form from 'react-bootstrap/Form';
@@ -12,16 +11,13 @@ import Button from 'react-bootstrap/Button'
 //   )
 
 function Quiz(){
-    const { quizId, assignmentId } = useParams();
+    const { quizId } = useParams();
 
     const [complete, setComplete] = useState(false)
     const [quiz, setQuiz] = useState([]);
     const [doneQuiz, setDoneQuiz] = useState({})
-
-    const { currentUser } = useContext(UserContext); 
     
 
-    const email = currentUser.email;
     useEffect(function getQuizFromServer(){
         async function getQuiz(){
             setQuiz(await TrainlyApi.getQuiz(quizId));
@@ -29,7 +25,7 @@ function Quiz(){
             console.log(doneQuiz)
         };
         getQuiz()
-    }, [quizId]);
+    });
 
 
     function handleChange(event){
@@ -92,7 +88,7 @@ function Quiz(){
                             </div>
                         </li>)
                         :
-                        (<li className="list-item" className="video-responsive">
+                        (<li className="list-item, video-responsive">
                             <iframe
                             width="853"
                             height="480"

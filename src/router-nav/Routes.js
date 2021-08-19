@@ -7,8 +7,7 @@ import PrivateRoute from './PrivateRoutes'
 import AssignmentList from '../assignments/AssignmentList';
 import QuizPage from '../assignments/QuizPage';
 import Quiz from '../assignments/Quiz';
-import AdminRoute from "./AdminRoute";
-import ToolBox from "../trainer/ToolBox";
+
 
 function Routes({ login, signup, infoLoaded, setInfoLoaded }) {
     console.debug(

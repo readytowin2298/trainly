@@ -1,7 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Link, NavLink, useParams } from "react-router-dom";
-import UserContext from "../auth/UserContext";
-import { Nav, Navbar, Container, Fade } from 'react-bootstrap'
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TrainlyApi from "../api/TrainlyApi";
 
@@ -11,10 +9,7 @@ function QuizPage(){
     
     const [quiz, setQuiz] = useState([]);
     const [assignment, setAssignment] = useState([]);
-
-    const { currentUser } = useContext(UserContext); 
     
-    const email = currentUser.email;
     useEffect(function getQuizFromServer(){
         async function getQuiz(){
             setQuiz(await TrainlyApi.getQuiz(quizId));
@@ -22,7 +17,7 @@ function QuizPage(){
             console.log(assignment)
         };
         getQuiz()
-    }, [quizId]);
+    });
 
 
     return (

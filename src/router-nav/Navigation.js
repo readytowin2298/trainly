@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import { Nav, Navbar, Container } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import UserContext from "../auth/UserContext";
-import { Nav, Navbar, Container, Fade } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TrainlyApi from "../api/TrainlyApi";
 
@@ -15,7 +14,7 @@ function AssignmentList(){
             setAssignments(await TrainlyApi.getAssignments(email));
         };
         getAssignments()
-    }, [currentUser.email]);
+    }, [email]);
 
     return (
         <div className="container justify-content-center">
@@ -24,9 +23,9 @@ function AssignmentList(){
                     <div className="card-body">
                         <h5>{a.name}</h5>
                         <ul>
-                            <li>{a.description}</li>
-                            <li>{a.completed ? 'Complete' : 'Incomplete'}</li>
-                            <li>{a.score}</li>
+                            <li className="list-item" key={`${a.id}-description`}>{a.description}</li>
+                            <li className="list-item" key={`${a.id}-completed`}>{a.completed ? 'Complete' : 'Incomplete'}</li>
+                            <li className="list-item" key='lol'>{a.score}</li>
                         </ul>
                         <Link className="btn btn-primary" to={`/quizzes/${a.id}/${a.quizId}`} >Go To Quiz</Link>
                     </div>
